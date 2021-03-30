@@ -46,7 +46,7 @@ Use the copy function below to do the following:
 */
 
 function copy(ogFlavorsCopy){
-    let ogFlavorsCopy2 = ogFlavorsCopy.slice();
+    const ogFlavorsCopy2 = ogFlavorsCopy.slice();
     console.log(ogFlavorsCopy2)
     return ogFlavorsCopy2;
 }    
@@ -141,7 +141,9 @@ Use the removeFlavorByName function below to do the following:
 */
 
 function removeFlavorByName(array6, rmvFlav){
-    /*your code here*/
+    let indexNum = array6.indexOf(rmvFlav);
+    array6.splice(indexNum,1)
+    return array6;
 }
 
 
@@ -166,7 +168,7 @@ Use the filterByWord function below to do the following:
     DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
 */
 
-function filterByWord(/*your code here*/){
+function filterByWord(array7, flavorToFind){
     /*your code here*/
 }
 
