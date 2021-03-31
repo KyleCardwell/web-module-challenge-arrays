@@ -85,7 +85,7 @@ Use the addFlavor function below to do the following:
 */
 
 
-function addFlavor(array2, newFlav){
+function addFlavor(array2, newFlav) {
    array2 = [newFlav, ...array2];
    return array2;
 }
@@ -168,9 +168,21 @@ Use the filterByWord function below to do the following:
     DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
 */
 
-function filterByWord(array7, flavorToFind){
-    /*your code here*/
+function filterByWord(array7, flavorToFind) {
+   const filteredFlavors = [];
+
+   for (let i = 0; i < array7.length; i++) {
+
+       if (array7[i].includes(flavorToFind)) { //remember to put parentheses in an if statement!
+
+           filteredFlavors.push(array7[i]); 
+       }      
+   }
+
+   return filteredFlavors;
 }
+
+console.log(filterByWord(originalFlavors,"chocolate"));
 
 
 /* 💪💪💪💪💪🧁🍦🍨 STRETCH 🍨🍦🍫💪💪💪💪💪*/ 
