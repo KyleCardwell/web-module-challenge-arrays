@@ -197,8 +197,24 @@ Use the getAverageWordLength function below to do the following:
     For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-    /*code here*/
+function getAverageWordLength(array){
+    const arrCount = [];
+
+    for (let i = 0; i < array.length; i++) {
+        arrCount.push(array[i].length);      //adds the length of each original array index value as a new index in arrCount
+    }
+
+    console.log(arrCount);
+
+    let j = 0;
+    for (let i = 0; i < arrCount.length; i++) {  //adds all the values of arrCount
+      j = j + arrCount[i];
+    }
+    console.log(j);
+    console.log(array.length);
+    console.log(j/array.length);
+  
+    return j/array.length; //returns the sum of the arrCount values divided by the length of the original array (to get the average)
 }
 
 
@@ -215,8 +231,23 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-    /*code here*/
+function getRandomFlavors(arrayA, arrayB, arrayC, arrayD){
+
+    const allFlavors = arrayA.concat(arrayB, arrayC, arrayD); //combines all 4 arrays into one
+    // console.log(allFlavors);
+    
+    const randomFlavors = [];
+    
+    for (let i = 0; i < 31; i++) {
+     let j = Math.floor(Math.random() * (allFlavors.length-1));  //chooses a random number from 0 to 102 (the length of allFlavors)
+      
+     randomFlavors.push(allFlavors[j]); //adds the random index value to the end of the new randomFlavors array
+      
+     allFlavors.splice(j, 1);  //removes added random flavor from allFlavors so it can't be chosen again
+    }
+    
+    console.log(randomFlavors);
+    return randomFlavors;
 }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
