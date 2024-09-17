@@ -45,11 +45,11 @@ Use the copy function below to do the following:
     2. Return a copy of the received array  
 */
 
-function copy(/*your code here*/){
-    /*your code here*/
+function copy(ogFlavorsCopy){
+    const ogFlavorsCopy2 = ogFlavorsCopy.slice();
+    console.log(ogFlavorsCopy2)
+    return ogFlavorsCopy2;
 }    
-
-
 
 
 
@@ -64,8 +64,12 @@ For Example: is31Flavors(originalFlavors) will return true if your code is worki
 */
 
 
-function is31Flavors(/*your code here*/){
-   /*your code here*/
+function is31Flavors(array1){
+    let arrayCheck = false;
+   if (array1.length === 31) {
+    arrayCheck = true;
+   }
+   return arrayCheck;
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -81,10 +85,13 @@ Use the addFlavor function below to do the following:
 */
 
 
-function addFlavor(/*your code here*/){
-   /*your code here*/
+function addFlavor(array2, newFlav) {
+   array2 = [newFlav, ...array2];
+   return array2;
 }
 
+// addFlavor(originalFlavors, "Rainbow Sherbert");
+// console.log(originalFlavors);
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Houston, we have a problem! There are now 32 flavors in the originalFlavors array! Your task is to remove an item from the end of the array. 
@@ -97,11 +104,10 @@ Use the removeLastFlavor function below to do the following:
     For example: running removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]
 */
 
-function removeLastFlavor(/*your code here*/){
-   /*your code here*/
+function removeLastFlavor(array4){
+    array4.pop();
+    return array4;
 }
-
-
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function that returns a flavor at a given index in the array.
@@ -114,8 +120,8 @@ Use the getFlavorByIndex function below to do the following:
     For example: running getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully
 */
 
-function getFlavorByIndex(/*your code here*/){
-    /*your code here*/
+function getFlavorByIndex(array5, indexNum){
+    return array5[indexNum];
 }
 
 
@@ -134,8 +140,10 @@ Use the removeFlavorByName function below to do the following:
     HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
-    /*your code here*/
+function removeFlavorByName(array6, rmvFlav){
+    let indexNum = array6.indexOf(rmvFlav);
+    array6.splice(indexNum,1)
+    return array6;
 }
 
 
@@ -160,9 +168,21 @@ Use the filterByWord function below to do the following:
     DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
 */
 
-function filterByWord(/*your code here*/){
-    /*your code here*/
+function filterByWord(array7, flavorToFind) {
+   const filteredFlavors = [];
+
+   for (let i = 0; i < array7.length; i++) {
+
+       if (array7[i].includes(flavorToFind)) { //remember to put parentheses in an if statement!
+
+           filteredFlavors.push(array7[i]); 
+       }      
+   }
+
+   return filteredFlavors;
 }
+
+console.log(filterByWord(originalFlavors,"chocolate"));
 
 
 /* 💪💪💪💪💪🧁🍦🍨 STRETCH 🍨🍦🍫💪💪💪💪💪*/ 
@@ -177,8 +197,24 @@ Use the getAverageWordLength function below to do the following:
     For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-    /*code here*/
+function getAverageWordLength(array){
+    const arrCount = [];
+
+    for (let i = 0; i < array.length; i++) {
+        arrCount.push(array[i].length);      //adds the length of each original array index value as a new index in arrCount
+    }
+
+    console.log(arrCount);
+
+    let j = 0;
+    for (let i = 0; i < arrCount.length; i++) {  //adds all the values of arrCount
+      j = j + arrCount[i];
+    }
+    console.log(j);
+    console.log(array.length);
+    console.log(j/array.length);
+  
+    return j/array.length; //returns the sum of the arrCount values divided by the length of the original array (to get the average)
 }
 
 
@@ -195,8 +231,23 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-    /*code here*/
+function getRandomFlavors(arrayA, arrayB, arrayC, arrayD){
+
+    const allFlavors = arrayA.concat(arrayB, arrayC, arrayD); //combines all 4 arrays into one
+    // console.log(allFlavors);
+    
+    const randomFlavors = [];
+    
+    for (let i = 0; i < 31; i++) {
+     let j = Math.floor(Math.random() * (allFlavors.length-1));  //chooses a random number from 0 to 102 (the length of allFlavors)
+      
+     randomFlavors.push(allFlavors[j]); //adds the random index value to the end of the new randomFlavors array
+      
+     allFlavors.splice(j, 1);  //removes added random flavor from allFlavors so it can't be chosen again
+    }
+    
+    console.log(randomFlavors);
+    return randomFlavors;
 }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
